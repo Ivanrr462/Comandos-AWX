@@ -1,0 +1,14 @@
+[Unit]
+    Description=AWX Redis Docker container
+    Requires=docker.service
+    After=docker.service
+
+  [Service]
+    Restart=always
+    ExecStart=/usr/bin/docker start -a awx_redis
+    ExecStop=/usr/bin/docker stop -t 2 awx_redis
+
+  [Install]
+    WantedBy=default.target
+    sudo cp docker-awx_redis.service /etc/systemd/system/
+    sudo systemctl enable docker-awx_redis.service
