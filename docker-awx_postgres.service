@@ -1,14 +1,14 @@
 [Unit]
-    Description=AWX Redis Docker container
+    Description=AWX Postgres Docker container
     Requires=docker.service
     After=docker.service
 
   [Service]
     Restart=always
-    ExecStart=/usr/bin/docker start -a awx_redis
-    ExecStop=/usr/bin/docker stop -t 2 awx_redis
+    ExecStart=/usr/bin/docker start -a awx_postgres
+    ExecStop=/usr/bin/docker stop -t 2 awx_postgres
 
   [Install]
     WantedBy=default.target
-    sudo cp docker-awx_redis.service /etc/systemd/system/
-    sudo systemctl enable docker-awx_redis.service
+    sudo cp docker-awx_postgres.service /etc/systemd/system/
+    sudo systemctl enable docker-awx_postgres.service
